@@ -98,19 +98,23 @@ public class BuildingEntity extends BaseEntity{
     private String managerphone;
 
 
+//    @OneToMany(mappedBy = "buildingEntity",fetch = FetchType.LAZY)
+//    private List<RentareaEntity> rentareaEntities=new ArrayList<>();
 
-//    @OneToMany(mappedBy = "building", fetch = FetchType.LAZY)
-//    private List<AssignmentbuildingEntity>Assignmentbuildings=new ArrayList<>();
+//    @OneToMany(mappedBy = "buildingEntity", fetch = FetchType.LAZY)
+//    private List<AssignmentbuildingEntity>assignBuildingEntity=new ArrayList<>();
+
+//        @ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(name = "assignmentbuilding",
+//        joinColumns=@JoinColumn(name = "buildingid",nullable = false),
+//        inverseJoinColumns = @JoinColumn(name="staffid",nullable = false))
+//    private List<UserEntity> userEntities=new ArrayList<>();
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "assignmentbuilding",
-        joinColumns=@JoinColumn(name = "buildingid",nullable = false),
-        inverseJoinColumns = @JoinColumn(name="staffid",nullable = false))
-    private List<UserEntity> userEntities=new ArrayList<>();
-
-
-    @OneToMany(mappedBy = "building",fetch = FetchType.LAZY)
-    private List<RentareaEntity> rentareas=new ArrayList<>();
-
+            joinColumns=@JoinColumn(name = "buildingid", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="staffid", nullable = false))
+    private List<UserEntity> userEntities = new ArrayList<>();
 
 
     public String getName() {
@@ -351,13 +355,5 @@ public class BuildingEntity extends BaseEntity{
 
     public void setUserEntities(List<UserEntity> userEntities) {
         this.userEntities = userEntities;
-    }
-
-    public List<RentareaEntity> getRentareas() {
-        return rentareas;
-    }
-
-    public void setRentareas(List<RentareaEntity> rentareas) {
-        this.rentareas = rentareas;
     }
 }

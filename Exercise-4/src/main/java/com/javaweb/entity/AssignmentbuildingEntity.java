@@ -6,28 +6,27 @@
 //@Table(name = "assignmentbuilding")
 //public class AssignmentbuildingEntity extends BaseEntity{
 //
-//
 //    @ManyToOne
 //    @JoinColumn(name = "staffid")
-//    private UserEntity user;
+//    private UserEntity userEntity;
 //
 //    @ManyToOne
 //    @JoinColumn(name = "buildingid")
-//    private BuildingEntity building;
+//    private BuildingEntity buildingEntity;
 //
-//    public UserEntity getUser() {
-//        return user;
+//    public BuildingEntity getBuildingEntity() {
+//        return buildingEntity;
 //    }
 //
-//    public void setUser(UserEntity user) {
-//        this.user = user;
+//    public void setBuildingEntity(BuildingEntity buildingEntity) {
+//        this.buildingEntity = buildingEntity;
 //    }
 //
-//    public BuildingEntity getBuilding() {
-//        return building;
+//    public UserEntity getUserEntity() {
+//        return userEntity;
 //    }
 //
-//    public void setBuilding(BuildingEntity building) {
-//        this.building = building;
+//    public void setUserEntity(UserEntity userEntity) {
+//        this.userEntity = userEntity;
 //    }
 //}

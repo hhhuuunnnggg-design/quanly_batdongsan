@@ -320,23 +320,31 @@
       function assingmentBuilding(buildingId) {
         //   xuất giao diện ra maàn hình
         $("#assingmentBuildingModel").modal();
+        loadStaff(buildingId);
         // lấy giá trị
         $("#buildingId").val();
       }
       function loadStaff(buildingId){
           $.ajax({
-          type: "Get",
-          url: "${buildingAPI}/"+ buildingId/'staffs',
-          data: JSON.stringify(data),
+          url: "${buildingAPI}/"+ buildingId + '/staffs',
+           type: "GET",
+          // data: JSON.stringify(data),
           // định nghĩa kiểu dữ liệu trả về là json
-          contentType: "application/json",
+          // contentType: "application/json"
+          dataType:'json',
           success: function (response) {
             console.log(response);
             var row=""
             $.each(response.data,function (index,item){
                 row+='<tr>';
-                    row+='<td class="text-center"><input type="checkbox"  value='+item.staffId + 'id="checkbox_"' +item.staffId +item.checked +'/></td>';
-                    row+='<td class="text-center"/>'+item.fullName + '</td>';
+                    // row+='<td class="text-center"><input type="checkbox"  value='+item.staffId + 'id="checkbox_"' + item.staffId+ '"class="check-box-element"' +item.checked +'/></td>';
+                    // row+='<td class="text-center"/>'+item.fullName + '</td>';
+
+                    row += '<td class="text-center">';
+row += '<input type="checkbox" value="' + item.staffId + '" id="checkbox_' + item.staffId + '" class="check-box-element" ' + (item.checked ? 'checked' : '') + '/>';
+row += '</td>';
+row += '<td class="text-center">' + item.fullName + '</td>';
+
                 row+='</tr>';
             });
             $('#stafflist tbody').html(row);
@@ -359,11 +367,13 @@
           .find("tbody input[type=checkbox]:checked")
           .map(function () {
             return $(this).val();
-          })
-          .get();
+          }).get();
         data["staffs"] = staffs;
+        if(data['staffs']!='')
         console.log("ok");
       });
+
+
 
     //   chức năng tìm kiếm
     $("#btnSearchBuilding").click(function (e){

@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
+
 @Service
 public class BuildingServiceIpml implements BuildingService {
     @Autowired
@@ -24,7 +26,7 @@ public class BuildingServiceIpml implements BuildingService {
     @Override
     public ResponseDTO listStaffs(Long buildingId) {
 //        tìm tòa nhà
-        BuildingEntity building = buildingRepository.findById(buildingId).orElseThrow(() -> new RuntimeException("Building not found"));
+        BuildingEntity building = buildingRepository.findById(buildingId).get();
 //        danh sách tất cả nhân viên
         List<UserEntity> staffs=userRepository.findByStatusAndRoles_Code(1,"STAFF");
 //        danh sách nhan viên đang quản lý toàn nhà
