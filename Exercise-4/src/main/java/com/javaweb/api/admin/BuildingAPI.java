@@ -37,9 +37,9 @@ public class BuildingAPI {
         ResponseDTO result=buildingService.listStaffs(id);
         return result;
     }
-//    @PostMapping("/assigment")
-//    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
-//        System.out.println("ok");
-//
-//    }
+    @PostMapping("/assigment")
+    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
+        System.out.println("ok");
+
+    }
 }

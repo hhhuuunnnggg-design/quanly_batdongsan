@@ -306,7 +306,7 @@
 
                     </tbody>
                 </table>
-                <input type="hidden" id="buildingId" name="building" value="1" />
+                <input type="hidden" id="buildingId" name="building" value="" />
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-group-minier" id="btnassingmentBuilding" >Giao tòa nhà </button>
@@ -322,7 +322,7 @@
         $("#assingmentBuildingModel").modal();
         loadStaff(buildingId);
         // lấy giá trị
-        $("#buildingId").val();
+        $("#buildingId").val(buildingId);
       }
       function loadStaff(buildingId){
           $.ajax({
@@ -337,14 +337,10 @@
             var row=""
             $.each(response.data,function (index,item){
                 row+='<tr>';
-                    // row+='<td class="text-center"><input type="checkbox"  value='+item.staffId + 'id="checkbox_"' + item.staffId+ '"class="check-box-element"' +item.checked +'/></td>';
-                    // row+='<td class="text-center"/>'+item.fullName + '</td>';
-
                     row += '<td class="text-center">';
-row += '<input type="checkbox" value="' + item.staffId + '" id="checkbox_' + item.staffId + '" class="check-box-element" ' + (item.checked ? 'checked' : '') + '/>';
-row += '</td>';
-row += '<td class="text-center">' + item.fullName + '</td>';
-
+                    row += '<input type="checkbox" value="' + item.staffId + '" id="checkbox_' + item.staffId + '" class="check-box-element" ' + (item.checked ? 'checked' : '') + '/>';
+                    row += '</td>';
+                    row += '<td class="text-center">' + item.fullName + '</td>';
                 row+='</tr>';
             });
             $('#stafflist tbody').html(row);
@@ -369,11 +365,30 @@ row += '<td class="text-center">' + item.fullName + '</td>';
             return $(this).val();
           }).get();
         data["staffs"] = staffs;
-        if(data['staffs']!='')
+        if(data['staffs']!=''){
+            assingment(data);
+        }
         console.log("ok");
       });
 
-
+        function assingment(data){
+            $.ajax({
+          url: "${buildingAPI}/"+  'assigment',
+           type: "POST",
+          data: JSON.stringify(data),
+          contentType: "application/json",
+          dataType:'json',
+          success: function (response) {
+            console.log(response);
+            console.info("Giao tòa nhà thành công")
+          },
+          error: function (response) {
+            console.log(response);
+            window.location.href= "<c:url value= "/admin/building-list?message=giao thất bại"/>";
+            console.info("Giao không thành công")
+          },
+       });
+        }
 
     //   chức năng tìm kiếm
     $("#btnSearchBuilding").click(function (e){
