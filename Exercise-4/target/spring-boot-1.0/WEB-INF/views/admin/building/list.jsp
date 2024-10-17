@@ -341,9 +341,9 @@
                     // row+='<td class="text-center"/>'+item.fullName + '</td>';
 
                     row += '<td class="text-center">';
-row += '<input type="checkbox" value="' + item.staffId + '" id="checkbox_' + item.staffId + '" class="check-box-element" ' + (item.checked ? 'checked' : '') + '/>';
-row += '</td>';
-row += '<td class="text-center">' + item.fullName + '</td>';
+                    row += '<input type="checkbox" value="' + item.staffId + '" id="checkbox_' + item.staffId + '" class="check-box-element" ' + (item.checked ? 'checked' : '') + '/>';
+                    row += '</td>';
+                    row += '<td class="text-center">' + item.fullName + '</td>';
 
                 row+='</tr>';
             });
