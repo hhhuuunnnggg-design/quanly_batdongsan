@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="02d34d32-a330-4dd7-b58b-4b26c1200061" name="Changes" comment="" />
+    <list default="true" id="02d34d32-a330-4dd7-b58b-4b26c1200061" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-4/src/main/java/com/javaweb/entity/UserRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-4/src/main/java/com/javaweb/entity/UserRoleEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/api/admin/BuildingAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/api/admin/BuildingAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/entity/BuildingEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/entity/BuildingEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/entity/UserEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/entity/UserEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/service/impl/BuildingServiceIpml.class" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise-4/target/spring-boot-1.0/WEB-INF/classes/com/javaweb/service/impl/BuildingServiceIpml.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2mZ7qcDLWNkN06cZKst8Hr6lu3N" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -18,9 +32,18 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "test",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Admin/Documents/nguyen_dinh_hung/28tech/backend_java/lan5",
+    "last_opened_file_path": "C:/Users/Admin/Documents/nguyen_dinh_hung/28tech/backend_java/lan5/Exercise-4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -41,6 +64,16 @@
       <option name="presentableId" value="Default" />
       <updated>1727272435999</updated>
       <workItem from="1727272437034" duration="28000" />
+      <workItem from="1727491113423" duration="181000" />
+      <workItem from="1727491771489" duration="9000" />
+      <workItem from="1729169071470" duration="44000" />
+      <workItem from="1729169207374" duration="52000" />
+      <workItem from="1729169384211" duration="295000" />
+      <workItem from="1729169836419" duration="347000" />
+      <workItem from="1729170202884" duration="34000" />
+      <workItem from="1729170269225" duration="134000" />
+      <workItem from="1729170661289" duration="30000" />
+      <workItem from="1729171584275" duration="1114000" />
     </task>
     <servers />
   </component>
