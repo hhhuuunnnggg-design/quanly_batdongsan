@@ -8,13 +8,11 @@ public class BuildingSearchRequest extends AbstractDTO {
     private String name;
     private Long floorArea;
     private String district;
-    private String address;
     private String ward;
     private String street;
     private Long numberOfBasement;
     private String direction;
     private Long level;
-    private String rentarea;
     private Long areaFrom;
     private Long areaTo;
     private Long rentPriceFrom;
@@ -24,13 +22,6 @@ public class BuildingSearchRequest extends AbstractDTO {
     private Long staffId;
     private List<String> typeCode;
 
-    public String getRentarea() {
-        return rentarea;
-    }
-
-    public void setRentarea(String rentarea) {
-        this.rentarea = rentarea;
-    }
 
     public String getName() {
         return name;
@@ -158,13 +149,5 @@ public class BuildingSearchRequest extends AbstractDTO {
 
     public void setLevel(Long level) {
         this.level = level;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }

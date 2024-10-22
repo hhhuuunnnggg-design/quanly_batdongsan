@@ -27,12 +27,13 @@ public class UserAPI {
     }
 
     @PutMapping("/change-password/{id}")
-    public ResponseEntity<String> changePasswordUser(@PathVariable("id") long id, @RequestBody PasswordDTO passwordDTO) {
+    public ResponseEntity<String> changePasswordUser(@PathVariable("id") long id,
+            @RequestBody PasswordDTO passwordDTO) {
         try {
             userService.updatePassword(id, passwordDTO);
             return ResponseEntity.ok(SystemConstant.UPDATE_SUCCESS);
         } catch (MyException e) {
-            //LOGGER.error(e.getMessage());
+            // LOGGER.error(e.getMessage());
             return ResponseEntity.ok(e.getMessage());
         }
     }
@@ -43,7 +44,8 @@ public class UserAPI {
     }
 
     @PutMapping("/profile/{username}")
-    public ResponseEntity<UserDTO> updateProfileOfUser(@PathVariable("username") String username, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> updateProfileOfUser(@PathVariable("username") String username,
+            @RequestBody UserDTO userDTO) {
         return ResponseEntity.ok(userService.updateProfileOfUser(username, userDTO));
     }
 

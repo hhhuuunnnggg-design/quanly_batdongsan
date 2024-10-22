@@ -1,45 +1,61 @@
 package com.javaweb.api.admin;
 
+import com.javaweb.entity.AssignBuildingEntity;
+import com.javaweb.entity.BuildingEntity;
+import com.javaweb.entity.RentAreaEntity;
 import com.javaweb.model.dto.AssignmentBuildingDTO;
 import com.javaweb.model.dto.BuildingDTO;
 import com.javaweb.model.response.ResponseDTO;
+import com.javaweb.repository.AssignBuildingRepository;
+import com.javaweb.repository.BuildingRepository;
+import com.javaweb.repository.RentAreaRepository;
+import com.javaweb.service.AssignmentBuildingService;
 import com.javaweb.service.BuildingService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.javaweb.service.RentAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController(value = "buildingAPIOfadmin")
+@RestController(value = "buildingAPIOfAdmin")
 @RequestMapping("/api/building")
+@Transactional
 public class BuildingAPI {
-    private static final Logger log = LoggerFactory.getLogger(BuildingAPI.class);
     @Autowired
     private BuildingService buildingService;
+    @Autowired
+    private BuildingRepository buildingRepository;
+    @Autowired
+    private RentAreaRepository rentAreaRepository;
+    @Autowired
+    private AssignBuildingRepository assignBuildingRepository;
+    @Autowired
+    private AssignmentBuildingService assignmentBuildingService;
 
-    //update
     @PostMapping
-    public BuildingDTO btnAddOrUpdateBuilding(@RequestBody BuildingDTO buildingDTO) {
-        // xuong db de update
-        return buildingDTO;
+    public void addOrUpdateBuilding(@RequestBody BuildingDTO buildingDTO) {
+        // Xuong DB de update hoac them moi
+        buildingService.createAndUpdateBuilding(buildingDTO);
     }
 
-//    Delete
     @DeleteMapping("/{ids}")
-    public void deleteBuilDing(@PathVariable List<Long>ids) {
-        //xuống db để xóa building theo danh sách gưỉ về
-        System.out.println("đã xóa thành công"+ids);
-
+    public void deleteBuilding(@PathVariable Long[] ids) {
+        rentAreaRepository.deleteByBuildingEntityIdIn(ids);
+        assignBuildingRepository.deleteByBuildingEntityIdIn(ids);
+        buildingRepository.deleteByIdIn(ids);
     }
+
     @GetMapping("/{id}/staffs")
-    public ResponseDTO loadStaffs(@PathVariable Long id){
-        ResponseDTO result=buildingService.listStaffs(id);
+    public ResponseDTO loadStaffs(@PathVariable Long id) {
+        ResponseDTO result = buildingService.listStaffs(id);
         return result;
     }
-//    @PostMapping("/assigment")
-//    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
-//        System.out.println("ok");
-//
-//    }
+
+    @PostMapping("/assignment")
+    public void updateAssignmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO) {
+        assignBuildingRepository.deleteByBuildingEntityId(assignmentBuildingDTO.getBuildingId());
+        assignmentBuildingService.createAssignmentBuilding(assignmentBuildingDTO);
+    }
+
 }

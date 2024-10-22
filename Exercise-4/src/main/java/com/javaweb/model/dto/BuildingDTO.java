@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-//Sửa tòa nhà
 public class BuildingDTO extends AbstractDTO{
     private String name;
-    private String address;
     private Long floorArea;
     private String district;
     private String ward;
@@ -15,12 +13,188 @@ public class BuildingDTO extends AbstractDTO{
     private Long numberOfBasement;
     private String direction;
     private Long level;
-    private String rentArea;
-    private Long rentPrice;
     private String managerName;
     private String managerPhone;
-
     private List<String> typeCode;
+    private String rentArea;
+    private Long rentPrice;
+    private String rentPriceDescription;
+    private Long serviceFee;
+    private Long carFee;
+    private Long motoFee;
+    private Long overtimeFee;
+    private Long electricityFee;
+    private Long deposit;
+    private Long payment;
+    private String decorationTime;
+    private Double brokerageFee;
+    private String note;
+    private String rentTime;
+    private String structure;
+
+    private String image;
+
+    private String imageBase64;
+
+    private String imageName;
+
+    public String getImageBase64() {
+        if (imageBase64 != null) {
+            return imageBase64.split(",")[1];
+        }
+        return null;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setImageBase64(String imageBase64) {
+        this.imageBase64 = imageBase64;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public Double getBrokerageFee() {
+        return brokerageFee;
+    }
+
+    public void setBrokerageFee(Double brokerageFee) {
+        this.brokerageFee = brokerageFee;
+    }
+
+    public String getRentPriceDescription() {
+        return rentPriceDescription;
+    }
+
+    public void setRentPriceDescription(String rentPriceDescription) {
+        this.rentPriceDescription = rentPriceDescription;
+    }
+
+    public String getDistrict() {
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public Long getMotoFee() {
+        return motoFee;
+    }
+
+    public void setMotoFee(Long motoFee) {
+        this.motoFee = motoFee;
+    }
+
+    public String getRentArea() {
+        return rentArea;
+    }
+
+    public void setRentArea(String rentArea) {
+        this.rentArea = rentArea;
+    }
+
+    public Long getRentPrice() {
+        return rentPrice;
+    }
+
+    public void setRentPrice(Long rentPrice) {
+        this.rentPrice = rentPrice;
+    }
+
+
+    public Long getServiceFee() {
+        return serviceFee;
+    }
+
+    public void setServiceFee(Long serviceFee) {
+        this.serviceFee = serviceFee;
+    }
+
+    public Long getCarFee() {
+        return carFee;
+    }
+
+    public void setCarFee(Long carFee) {
+        this.carFee = carFee;
+    }
+
+
+    public Long getOvertimeFee() {
+        return overtimeFee;
+    }
+
+    public void setOvertimeFee(Long overtimeFee) {
+        this.overtimeFee = overtimeFee;
+    }
+
+    public Long getElectricityFee() {
+        return electricityFee;
+    }
+
+    public void setElectricityFee(Long electricityFee) {
+        this.electricityFee = electricityFee;
+    }
+
+    public Long getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(Long deposit) {
+        this.deposit = deposit;
+    }
+
+    public Long getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Long payment) {
+        this.payment = payment;
+    }
+
+    public String getDecorationTime() {
+        return decorationTime;
+    }
+
+    public void setDecorationTime(String decorationTime) {
+        this.decorationTime = decorationTime;
+    }
+
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public String getRentTime() {
+        return rentTime;
+    }
+
+    public void setRentTime(String rentTime) {
+        this.rentTime = rentTime;
+    }
+
+    public String getStructure() {
+        return structure;
+    }
+
+    public void setStructure(String structure) {
+        this.structure = structure;
+    }
 
     public String getName() {
         return name;
@@ -34,24 +208,8 @@ public class BuildingDTO extends AbstractDTO{
         return floorArea;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public void setFloorArea(Long floorArea) {
         this.floorArea = floorArea;
-    }
-
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
     }
 
     public String getWard() {
@@ -92,23 +250,6 @@ public class BuildingDTO extends AbstractDTO{
 
     public void setLevel(Long level) {
         this.level = level;
-    }
-
-
-    public String getRentArea() {
-        return rentArea;
-    }
-
-    public Long getRentPrice() {
-        return rentPrice;
-    }
-
-    public void setRentPrice(Long rentPrice) {
-        this.rentPrice = rentPrice;
-    }
-
-    public void setRentArea(String rentArea) {
-        this.rentArea = rentArea;
     }
 
     public String getManagerName() {
