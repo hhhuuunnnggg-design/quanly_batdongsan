@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController(value = "buildingAPIOfAdmin")
-@RequestMapping("/api/building")
+@RequestMapping ("/api/building")
 @Transactional
 public class BuildingAPI {
     @Autowired
@@ -34,20 +34,20 @@ public class BuildingAPI {
     private AssignmentBuildingService assignmentBuildingService;
 
     @PostMapping
-    public void addOrUpdateBuilding(@RequestBody BuildingDTO buildingDTO) {
-        // Xuong DB de update hoac them moi
+    public void addOrUpdateBuilding(@RequestBody BuildingDTO buildingDTO){
+        //Xuong DB de update hoac them moi
         buildingService.createAndUpdateBuilding(buildingDTO);
     }
 
     @DeleteMapping("/{ids}")
-    public void deleteBuilding(@PathVariable Long[] ids) {
+    public void deleteBuilding(@PathVariable Long[] ids){
         rentAreaRepository.deleteByBuildingEntityIdIn(ids);
         assignBuildingRepository.deleteByBuildingEntityIdIn(ids);
         buildingRepository.deleteByIdIn(ids);
     }
 
     @GetMapping("/{id}/staffs")
-    public ResponseDTO loadStaffs(@PathVariable Long id) {
+    public ResponseDTO loadStaffs(@PathVariable Long id){
         ResponseDTO result = buildingService.listStaffs(id);
         return result;
     }
