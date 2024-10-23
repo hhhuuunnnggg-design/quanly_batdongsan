@@ -29,7 +29,7 @@ public class BuildingAPI {
     @DeleteMapping("/{ids}")
     public void deleteBuilDing(@PathVariable List<Long>ids) {
         //xuống db để xóa building theo danh sách gưỉ về
-        System.out.println("đã xóa thành công"+ids);
+        System.out.println("đã xóa thành công {ids} "+ids);
 
     }
     @GetMapping("/{id}/staffs")

@@ -6,7 +6,6 @@ import com.javaweb.enums.districtCode;
 import com.javaweb.model.response.BuildingSearchResponse;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;

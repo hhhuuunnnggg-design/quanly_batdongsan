@@ -10,10 +10,6 @@ public class UserEntity extends BaseEntity {
 
     private static final long serialVersionUID = -4988455421375043688L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
     @Column(name = "username", nullable = false, unique = true)
     private String userName;
 
@@ -33,8 +29,11 @@ public class UserEntity extends BaseEntity {
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
     private List<RoleEntity> roles = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "userEntities", fetch = FetchType.LAZY) // Sửa: từ UserEntity thành userEntities
-    List<BuildingEntity> buildingEntityList = new ArrayList<>();
+    @OneToMany(mappedBy = "userEntity", fetch = FetchType.LAZY)
+    private List<AssignBuildingEntity> assignBuildingEntities = new ArrayList<>();
+    //
+    // @OneToMany(mappedBy="users", fetch = FetchType.LAZY)
+    // private List<UserRoleEntity> userRoleEntities = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -84,25 +83,7 @@ public class UserEntity extends BaseEntity {
         return email;
     }
 
-    public List<BuildingEntity> getBuildingEntityList() {
-        return buildingEntityList;
-    }
-
-    public void setBuildingEntityList(List<BuildingEntity> buildingEntityList) {
-        this.buildingEntityList = buildingEntityList;
-    }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
-    // @Override
-    // public Long getId() {
-    // return id;
-    // }
-
-    // @Override
-    // public void setId(Long id) {
-    // this.id = id;
-    // }
 }

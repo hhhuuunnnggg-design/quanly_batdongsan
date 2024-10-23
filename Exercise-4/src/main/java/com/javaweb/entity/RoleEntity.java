@@ -9,7 +9,6 @@ import java.util.List;
 public class RoleEntity extends BaseEntity {
 
     private static final long serialVersionUID = -6525302831793188081L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,8 +33,11 @@ public class RoleEntity extends BaseEntity {
         this.id = id;
     }
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY) // Sửa: từ RoleEntity thành roles
-    private List<UserEntity> users = new ArrayList<>(); // Sửa: từ user thành users
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<UserEntity> user = new ArrayList<>();
+
+    // @OneToMany(mappedBy="roles",fetch = FetchType.LAZY)
+    // private List<UserRoleEntity> userRoleEntities = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -54,10 +56,11 @@ public class RoleEntity extends BaseEntity {
     }
 
     public List<UserEntity> getUsers() {
-        return users;
+        return user;
     }
 
     public void setUsers(List<UserEntity> users) {
-        this.users = users;
+        this.user = users;
     }
+
 }

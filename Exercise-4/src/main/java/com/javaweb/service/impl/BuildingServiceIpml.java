@@ -1,8 +1,10 @@
 package com.javaweb.service.impl;
 
 import com.javaweb.converter.BuildingSearchResponseConverter;
+import com.javaweb.entity.AssignBuildingEntity;
 import com.javaweb.entity.BuildingEntity;
 import com.javaweb.entity.UserEntity;
+import com.javaweb.model.dto.BuildingDTO;
 import com.javaweb.model.request.BuildingSearchRequest;
 import com.javaweb.model.response.BuildingSearchResponse;
 import com.javaweb.model.response.ResponseDTO;
@@ -29,28 +31,27 @@ public class BuildingServiceIpml implements BuildingService {
 
     @Override
     public ResponseDTO listStaffs(Long buildingId) {
-        // tìm tòa nhà
         BuildingEntity building = buildingRepository.findById(buildingId).get();
-        // danh sách tất cả nhân viên
         List<UserEntity> staffs = userRepository.findByStatusAndRoles_Code(1, "STAFF");
-        // danh sách nhan viên đang quản lý toàn nhà
-        List<UserEntity> staffAssiment = building.getUserEntities();
+        List<UserEntity> staffAssignment = new ArrayList<>();
+        for (AssignBuildingEntity it : building.getAssignBuildingEntities()) {
+            staffAssignment.add(it.getUserEntity());
+        }
+        List<StaffResponseDTO> staffResponseDTOS = new ArrayList<>();
         ResponseDTO responseDTO = new ResponseDTO();
-
-        List<StaffResponseDTO> StaffResponseDTOS = new ArrayList<>();
         for (UserEntity it : staffs) {
             StaffResponseDTO staffResponseDTO = new StaffResponseDTO();
-            staffResponseDTO.setStaffId(it.getId());
             staffResponseDTO.setFullName(it.getFullName());
-            if (staffAssiment.contains(it)) {
+            staffResponseDTO.setStaffId(it.getId());
+            if (staffAssignment.contains(it)) {
                 staffResponseDTO.setChecked("checked");
             } else {
                 staffResponseDTO.setChecked("");
             }
-            StaffResponseDTOS.add(staffResponseDTO);
+            staffResponseDTOS.add(staffResponseDTO);
         }
-        responseDTO.setData(StaffResponseDTOS);
-        responseDTO.setMessage("Thành công");
+        responseDTO.setData(staffResponseDTOS);
+        responseDTO.setMessage("SUCCESS");
         return responseDTO;
     }
 
@@ -64,4 +65,19 @@ public class BuildingServiceIpml implements BuildingService {
         }
         return result;
     }
+
+    @Override
+    public void createAndUpdateBuilding(BuildingDTO buildingDTO) {
+
+    }
+
+//    private void saveThumbnail(BuildingDTO buildingDTO, BuildingEntity buildingEntity) {
+//        String path = "/building/" + buildingDTO.getImageName();
+//        if (null != buildingDTO.getImageBase64()) {
+//            String image = buildingDTO.getImageBase64().substring(buildingDTO.getImageBase64().indexOf(",") + 1);
+//            byte[] bytes = Base64.decodeBase64(image.getBytes());
+//            uploadFileUtils.writeOrUpdate(path, bytes);
+//            buildingEntity.setImage(path);
+//        }
+//    }
 }
