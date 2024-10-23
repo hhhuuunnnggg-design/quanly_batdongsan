@@ -34,6 +34,8 @@ public class BuildingRepositoryImpl implements BuildingRepositoryCustom {
         List<BuildingEntity> resultListTotal = queryTotal.getResultList();
         buildingSearchBuilder.setTotalItems(resultListTotal.size());
         sql.append(" LIMIT ").append(pageable.getPageSize()).append(" OFFSET ").append(pageable.getOffset());
+        System.out.println(sql.toString());
+        System.out.println(sql);
         Query query = entityManager.createNativeQuery(sql.toString(), BuildingEntity.class);
         return query.getResultList();
     }
