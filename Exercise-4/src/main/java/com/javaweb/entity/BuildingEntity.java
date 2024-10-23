@@ -1,14 +1,20 @@
 package com.javaweb.entity;
 
-
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
 @Table(name = "building")
-public class BuildingEntity extends BaseEntity{
-
+public class BuildingEntity extends BaseEntity {
 
     @Column(name = "name")
     private String name;
@@ -16,7 +22,7 @@ public class BuildingEntity extends BaseEntity{
     @Column(name = "street")
     private String street;
 
-    @Column(name="ward")
+    @Column(name = "ward")
     private String ward;
 
     @Column(name = "district")
@@ -97,25 +103,23 @@ public class BuildingEntity extends BaseEntity{
     @Column(name = "managerphone")
     private String managerphone;
 
-
-//    @OneToMany(mappedBy = "buildingEntity",fetch = FetchType.LAZY)
-//    private List<RentareaEntity> rentareaEntities=new ArrayList<>();
-
-//    @OneToMany(mappedBy = "buildingEntity", fetch = FetchType.LAZY)
-//    private List<AssignmentbuildingEntity>assignBuildingEntity=new ArrayList<>();
-
-//        @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(name = "assignmentbuilding",
-//        joinColumns=@JoinColumn(name = "buildingid",nullable = false),
-//        inverseJoinColumns = @JoinColumn(name="staffid",nullable = false))
-//    private List<UserEntity> userEntities=new ArrayList<>();
+    @OneToMany(mappedBy = "buildingEntity", fetch = FetchType.LAZY) // Sửa: từ BuildingEntity thành buildingEntity
+    private List<RentAreaEntity> rentAreaEntities = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "assignmentbuilding",
-            joinColumns=@JoinColumn(name = "buildingid", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="staffid", nullable = false))
+    @JoinTable(name = "assignmentbuilding", joinColumns = @JoinColumn(name = "buildingid", nullable = false), inverseJoinColumns = @JoinColumn(name = "staffid", nullable = false))
     private List<UserEntity> userEntities = new ArrayList<>();
 
+    // Getter và Setter
+    // ...
+
+    public List<RentAreaEntity> getRentAreaEntities() {
+        return rentAreaEntities;
+    }
+
+    public void setRentAreaEntities(List<RentAreaEntity> rentAreaEntities) {
+        this.rentAreaEntities = rentAreaEntities;
+    }
 
     public String getName() {
         return name;
@@ -123,6 +127,10 @@ public class BuildingEntity extends BaseEntity{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setUserEntities(List<UserEntity> userEntities) {
+        this.userEntities = userEntities;
     }
 
     public String getStreet() {
@@ -351,9 +359,5 @@ public class BuildingEntity extends BaseEntity{
 
     public List<UserEntity> getUserEntities() {
         return userEntities;
-    }
-
-    public void setUserEntities(List<UserEntity> userEntities) {
-        this.userEntities = userEntities;
     }
 }

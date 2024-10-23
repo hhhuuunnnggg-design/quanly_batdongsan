@@ -30,21 +30,11 @@ public class UserEntity extends BaseEntity {
     private String email;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", nullable = false), inverseJoinColumns = @JoinColumn(name = "role_id", nullable = false))
     private List<RoleEntity> roles = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "userEntities", fetch = FetchType.LAZY) // sửa từ userEntity thành userEntities
+    @ManyToMany(mappedBy = "userEntities", fetch = FetchType.LAZY) // Sửa: từ UserEntity thành userEntities
     List<BuildingEntity> buildingEntityList = new ArrayList<>();
-
-
-
-//    @OneToMany(mappedBy="staffs", fetch = FetchType.LAZY)
-//    private List<AssignmentBuildingEntity> assignmentBuildingEntities = new ArrayList<>();
-//
-//    @OneToMany(mappedBy="users", fetch = FetchType.LAZY)
-//    private List<UserRoleEntity> userRoleEntities = new ArrayList<>();
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -94,7 +84,6 @@ public class UserEntity extends BaseEntity {
         return email;
     }
 
-
     public List<BuildingEntity> getBuildingEntityList() {
         return buildingEntityList;
     }
@@ -106,15 +95,14 @@ public class UserEntity extends BaseEntity {
     public void setEmail(String email) {
         this.email = email;
     }
-        @Override
-    public Long getId() {
-        return id;
-    }
 
+    // @Override
+    // public Long getId() {
+    // return id;
+    // }
 
-    @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
+    // @Override
+    // public void setId(Long id) {
+    // this.id = id;
+    // }
 }
-
