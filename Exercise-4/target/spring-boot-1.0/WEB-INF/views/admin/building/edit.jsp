@@ -311,7 +311,10 @@
                 alert("Cập nhật tòa nhà thành công!");
                 window.location.href = "/admin/building-list?message=success";
             } else {
-                alert("Thêm mới tòa nhà thành công!");
+                alert("Thêm mới tòa nhà thành công!123" +
+                 "" +
+                  "" +
+                   "");
                 window.location.href = "/admin/building-list?message=success";
             }
         } else {
@@ -319,7 +322,7 @@
                 alert("Cập nhật tòa nhà không thành công!");
                 window.location.href = "/admin/building-edit-" + data['id'] + "?typeCode=required&district=required";
             } else {
-                alert("Thêm mới tòa nhà không thành công!");
+                alert("Thêm mới tòa nhà không thành công!!");
                 window.location.href = "<c:url value="/admin/building-edit?typeCode=required&district=required"/>";
             }
 
