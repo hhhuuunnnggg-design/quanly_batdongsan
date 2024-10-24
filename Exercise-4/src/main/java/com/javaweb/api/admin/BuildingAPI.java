@@ -6,7 +6,9 @@ import com.javaweb.model.response.ResponseDTO;
 import com.javaweb.repository.AssignBuildingRepository;
 import com.javaweb.repository.BuildingRepository;
 import com.javaweb.repository.RentAreaRepository;
+import com.javaweb.service.AssignmentBuildingService;
 import com.javaweb.service.BuildingService;
+import com.javaweb.service.impl.AssignmentBuildingServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +33,9 @@ public class BuildingAPI {
     @Autowired
     private BuildingRepository buildingRepository;
 
+    @Autowired
+    private AssignmentBuildingService assignmentBuildingService;
+
     //update
     @PostMapping
     public BuildingDTO btnAddOrUpdateBuilding(@RequestBody BuildingDTO buildingDTO) {
@@ -54,9 +59,12 @@ public class BuildingAPI {
         ResponseDTO result=buildingService.listStaffs(id);
         return result;
     }
-//    @PostMapping("/assigment")
-//    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
-//        System.out.println("ok");
-//
-//    }
+
+    @Transactional
+    @PostMapping("/assigment") // chức năng giao tòa nhà cho nhiên viên quản lý
+    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
+        assignBuildingRepository.deleteByBuildingEntityId(assignmentBuildingDTO.getBuildingId());
+        assignmentBuildingService.createAssignmentBuilding(assignmentBuildingDTO);
+        System.out.println("đây chiính là giao toa nha");
+    }
 }

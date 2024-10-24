@@ -388,7 +388,7 @@
     function deleteBuilding(data) {
         var buildingId = [data];
         deleteBuildings(buildingId);
-        // alert("Xóa tòa nhà thành công, id la: "+buildingId);
+         alert("Xóa tòa nhà thành công, id la: "+buildingId); // xóa 1 tòa nhà
         window.location.href = "/admin/building-list";
     }
 
@@ -398,7 +398,7 @@
             return $(this).val();
         }).get();
         deleteBuildings(buildingIds);
-        // alert("Xóa tòa nhà thành công ids là: " +buildingIds);
+         alert("Xóa tòa nhà thành công ids là: " +buildingIds); // xóa nhiều tòa nhà
         window.location.href = "/admin/building-list";
     })
 
