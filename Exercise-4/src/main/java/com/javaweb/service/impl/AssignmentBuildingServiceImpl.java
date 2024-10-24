@@ -33,8 +33,6 @@ public class AssignmentBuildingServiceImpl implements AssignmentBuildingService 
 
             assignBuildingEntities.add(assignBuildingEntity);
         }
-        for(AssignBuildingEntity it : assignBuildingEntities){
-            assignBuildingRepository.save(it);
-        }
+        assignBuildingRepository.saveAll(assignBuildingEntities);
     }
 }
