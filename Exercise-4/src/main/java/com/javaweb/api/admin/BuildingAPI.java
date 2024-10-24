@@ -61,10 +61,10 @@ public class BuildingAPI {
     }
 
     @Transactional
-    @PostMapping("/assigment") // chức năng giao tòa nhà cho nhiên viên quản lý
-    public void updateAssigmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO){
+    @PostMapping("/assignment")
+    public void updateAssignmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO) {
         assignBuildingRepository.deleteByBuildingEntityId(assignmentBuildingDTO.getBuildingId());
         assignmentBuildingService.createAssignmentBuilding(assignmentBuildingDTO);
-        System.out.println("đây chiính là giao toa nha");
     }
+
 }

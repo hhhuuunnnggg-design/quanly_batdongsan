@@ -60,12 +60,12 @@
                                             <div class="col-xs-12">
                                                 <div class="col-xs-6">
                                                     <label class="name">Tên tòa nhà</label>
-                                                        <%--                                                        <input id="name" type="text" class="form-control" name="name" value="${modelSearch.name}">--%>
+
                                                     <form:input class="form-control" path="name"/>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label class="name">Diện tích sàn</label>
-                                                        <%--                                                        <input type="number" class="form-control" name="floorArea" value="${modelSearch.floorArea}">--%>
+
                                                     <form:input class="form-control" path="floorArea"/>
                                                 </div>
                                             </div>
@@ -151,14 +151,7 @@
                                                         <%--                                                        <input type="text" class="form-control" name="managerPhone" value="">--%>
                                                     <form:input class="form-control" path="managerPhone"/>
                                                 </div>
-                                                    <%--                                                    <div class="col-xs-2">--%>
-                                                    <%--                                                        <label class="name">Nhân viên</label>--%>
-                                                    <%--                                                        <select class="form-control">--%>
-                                                    <%--                                                            <option value="">---Chọn Nhân Viên---</option>--%>
-                                                    <%--                                                            <option value="2">Nguyễn Tá Phong</option>--%>
-                                                    <%--                                                            <option value="3">Nguyễn Tá Tùng</option>--%>
-                                                    <%--                                                        </select>--%>
-                                                    <%--                                                    </div>--%>
+
                                                 <div class="col-xs-2">
                                                     <label class="name">Nhân viên</label>
                                                     <form:select class="form-control" path="staffId">
@@ -234,7 +227,7 @@
             </div>
 
             <!-- Bảng danh sách -->
-
+<%--            start bảng--%>
             <div class="row">
                 <div class="col-xs-12">
                     <display:table name="modelSearch.listResult" cellspacing="0" cellpadding="0"
@@ -281,7 +274,7 @@
                     </display:table>
                 </div><!-- /.span -->
             </div>
-
+<%--end bảng--%>
         </div><!-- /.page-content -->
     </div>
 
@@ -395,7 +388,7 @@
     function deleteBuilding(data) {
         var buildingId = [data];
         deleteBuildings(buildingId);
-        alert("Xóa tòa nhà thành công!");
+         alert("Xóa tòa nhà thành công, id la: "+buildingId); // xóa 1 tòa nhà
         window.location.href = "/admin/building-list";
     }
 
@@ -405,7 +398,7 @@
             return $(this).val();
         }).get();
         deleteBuildings(buildingIds);
-        alert("Xóa tòa nhà thành công!");
+         alert("Xóa tòa nhà thành công ids là: " +buildingIds); // xóa nhiều tòa nhà
         window.location.href = "/admin/building-list";
     })
 
