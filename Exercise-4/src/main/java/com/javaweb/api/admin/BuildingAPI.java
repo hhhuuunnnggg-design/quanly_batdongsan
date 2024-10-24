@@ -56,6 +56,7 @@ public class BuildingAPI {
     public void updateAssignmentBuilding(@RequestBody AssignmentBuildingDTO assignmentBuildingDTO) {
         assignBuildingRepository.deleteByBuildingEntityId(assignmentBuildingDTO.getBuildingId());
         assignmentBuildingService.createAssignmentBuilding(assignmentBuildingDTO);
+
     }
 
 }
